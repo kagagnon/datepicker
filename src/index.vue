@@ -1,6 +1,6 @@
 <template>
-  <component :value="date" :placeholder="placeholder" 
-    :inputClass="inputClass" :alignment="alignment" 
+  <component :value="date" :placeholder="placeholder"
+    :inputClass="inputClass" :alignment="alignment"
     :is="wrap ? 'WrapperInput' : 'SingleInput'">
     <slot></slot>
   </component>
@@ -59,7 +59,12 @@ export default {
       this.datepicker.jumpToDate()
     },
     setDate (newDate, oldDate) {
-      newDate && this.datepicker.setDate(newDate)
+      if(newDate){
+        this.datepicker.setDate(newDate)
+      }else{
+        this.datepicker.setDate(newDate)
+        this.date = '';
+      }
     },
     dateUpdated (selectedDates, dateStr) {
       this.date = dateStr
